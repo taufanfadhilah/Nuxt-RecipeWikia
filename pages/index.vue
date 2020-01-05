@@ -1,9 +1,6 @@
 <template>
   <div class="container-fluid">
-    <Loading
-      :active.sync="isLoading"
-      loader="bars"
-    />
+    <Loading :isLoading="isLoading" />
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <div class="card">
@@ -45,8 +42,7 @@
 
 <script>
 import swal from 'sweetalert'
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/vue-loading.css'
+import Loading from '../components/Loading'
 
 export default {
   data() {

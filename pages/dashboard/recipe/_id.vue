@@ -1,8 +1,14 @@
 <template>
   <div class="container">
+    <Loading :isLoading="isLoading" />
     <div class="row">
       <div class="col-md-4 pt-5">
-        <img :src="recipe.image" alt="recipe-image" class="img-recipe" />
+        <img
+          v-if="recipe.image"
+          :src="recipe.image"
+          alt="recipe-image"
+          class="img-recipe"
+        />
         <p class="mt-3">
           <font-awesome-icon icon="stopwatch" />
           {{ recipe.readyInMinutes }} Mins -
@@ -33,10 +39,13 @@
 </template>
 
 <script>
+import Loading from '../../../components/Loading'
+
 export default {
   layout: 'dashboard',
+  components: { Loading },
   data() {
-    return { recipe: {} }
+    return { recipe: {}, isLoading: true }
   },
   mounted() {
     const id = this.$route.params.id
@@ -45,8 +54,8 @@ export default {
         `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.API_KEY}`
       )
       .then(res => {
+        this.isLoading = false
         this.recipe = res
-        console.log('recipe', res)
       })
       .catch(err => console.log(err))
   }
