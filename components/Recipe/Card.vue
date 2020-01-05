@@ -9,7 +9,8 @@
       class="mb-3"
     >
       <b-card-text>
-        <v-icon name="stopwatch" /> {{recipe.readyInMinutes}} Mins - <v-icon name="pizza-slice" /> {{recipe.servings}}
+        <font-awesome-icon icon="stopwatch" /> {{ recipe.readyInMinutes }} Mins
+        - <font-awesome-icon icon="pizza-slice" /> {{ recipe.servings }}
         Portions
       </b-card-text>
     </b-card>
@@ -17,14 +18,8 @@
 </template>
 
 <script>
-import 'vue-awesome/icons/stopwatch'
-import 'vue-awesome/icons/pizza-slice'
-import Icon from 'vue-awesome/components/Icon'
 export default {
-  props: ['recipe'],
-  components: {
-    'v-icon': Icon
-  }
+  props: ['recipe']
 }
 </script>
 

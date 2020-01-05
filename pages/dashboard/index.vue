@@ -43,5 +43,6 @@ export default {
 <style>
 h4 {
   color: #212121;
+  font-weight: 700;
 }
 </style>
