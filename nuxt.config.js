@@ -58,6 +58,12 @@ module.exports = {
           }
         ]
       }
+    ],
+    [
+      'nuxt-vuex-localstorage',
+      {
+        mode: 'debug'
+      }
     ]
   ],
   /*

@@ -45,11 +45,9 @@ import swal from 'sweetalert'
 import Loading from '../components/Loading'
 
 export default {
-  data() {
-    return {
-      isLoading: false
-    }
-  },
+  data: () => ({
+    isLoading: false
+  }),
   components: { Loading },
   methods: {
     doLogin(e) {
@@ -62,6 +60,7 @@ export default {
       this.$axios
         .$post('https://jsonplaceholder.typicode.com/posts', data)
         .then(res => {
+          this.$store.commit('localStorage/login', res)
           swal('Success', 'Login Success', 'success').then(() => {
             this.isLoading = false
             this.$router.push('/dashboard')

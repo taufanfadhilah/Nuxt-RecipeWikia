@@ -7,11 +7,22 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item href="/dashboard">Home</b-nav-item>
-        <b-nav-item href="/">Logout</b-nav-item>
+        <b-nav-item @click="doLogout">Logout</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
+
+<script>
+export default {
+  methods: {
+    doLogout() {
+      this.$store.commit('localStorage/logout')
+      this.$router.push('/')
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .navbar {
