@@ -9,10 +9,10 @@
     <div class="row">
       <div
         class="col-md-3"
-        v-for="recipe in [1, 2, 3, 4, 5, 6, 7, 8]"
-        :key="recipe"
+        v-for="recipe in recipes"
+        :key="recipe.id"
       >
-        <Card :id="recipe" />
+        <Card :recipe="recipe" />
       </div>
     </div>
   </div>
@@ -23,7 +23,20 @@ import Card from '../../components/Recipe/Card'
 
 export default {
   layout: 'dashboard',
-  components: { Card }
+  data(){
+    return {
+      recipes: []
+    }
+  },
+  components: { Card },
+  mounted() {
+    this.$axios
+      .$get(
+        `https://api.spoonacular.com/recipes/search?query=sambal&number=12&apiKey=${process.env.API_KEY}`
+      )
+      .then(res => this.recipes = res.results)
+      .catch(err => console.log(err))
+  }
 }
 </script>
 

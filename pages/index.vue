@@ -70,7 +70,6 @@ export default {
             this.isLoading = false
             this.$router.push('/dashboard')
           })
-          console.log(res)
         })
         .catch(err => console.log(err))
     }
