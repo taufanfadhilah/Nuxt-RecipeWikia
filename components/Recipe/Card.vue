@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`recipe/${id}`">
+  <nuxt-link :to="`dashboard/recipe/${id}`">
     <b-card
       title="Sweety Doughnut"
       img-src="https://topwithcinnamon.com/wp-content/uploads/2019/03/Rhubarb-Baked-Doughnuts-3-720x720.jpg"
