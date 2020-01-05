@@ -34,8 +34,9 @@ import Card from '../../components/Recipe/Card'
 import Loading from '../../components/Loading'
 
 export default {
-  name: "recipe-page",
+  name: 'recipe-page',
   layout: 'dashboard',
+  middleware: 'authenticated',
   data() {
     return {
       recipes: [],

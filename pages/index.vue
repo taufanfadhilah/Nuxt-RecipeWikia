@@ -45,6 +45,7 @@ import swal from 'sweetalert'
 import Loading from '../components/Loading'
 
 export default {
+  middleware: 'guest',
   data: () => ({
     isLoading: false
   }),

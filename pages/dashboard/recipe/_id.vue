@@ -43,6 +43,7 @@ import Loading from '../../../components/Loading'
 
 export default {
   layout: 'dashboard',
+  middleware: 'authenticated',
   components: { Loading },
   data() {
     return { recipe: {}, isLoading: true }
