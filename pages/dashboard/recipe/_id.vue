@@ -22,6 +22,9 @@
             :key="ingredient.id"
           >
             {{ ingredient.name }}
+            <span class="amount"
+              >({{ ingredient.amount }} {{ ingredient.unit }})</span
+            >
           </li>
         </ul>
       </div>
@@ -41,7 +44,10 @@ export default {
       .$get(
         `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.API_KEY}`
       )
-      .then(res => (this.recipe = res))
+      .then(res => {
+        this.recipe = res
+        console.log('recipe', res)
+      })
       .catch(err => console.log(err))
   }
 }
@@ -76,5 +82,9 @@ li {
 .img-recipe {
   width: 300px;
   border-radius: 6px;
+}
+.amount {
+  font-style: italic;
+  font-weight: 500;
 }
 </style>
