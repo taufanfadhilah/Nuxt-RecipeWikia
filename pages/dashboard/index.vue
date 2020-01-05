@@ -34,6 +34,7 @@ import Card from '../../components/Recipe/Card'
 import Loading from '../../components/Loading'
 
 export default {
+  name: "recipe-page",
   layout: 'dashboard',
   data() {
     return {
@@ -91,6 +92,12 @@ h4 {
   cursor: pointer;
   margin-right: 10px;
   margin-bottom: 10px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.1s;
+}
+.badge:hover {
+  top: -2px;
 }
 .badge-disabled {
   background-color: #ef5350;

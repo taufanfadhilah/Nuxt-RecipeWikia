@@ -5,7 +5,6 @@
       :img-src="`https://spoonacular.com/recipeImages/${recipe.id}-556x370.jpg`"
       img-alt="recipe-image"
       img-top
-      tag="recipe"
       class="mb-3"
     >
       <b-card-text>
@@ -19,6 +18,7 @@
 
 <script>
 export default {
+  name: 'recipe-card',
   props: ['recipe']
 }
 </script>
@@ -30,6 +30,12 @@ a {
 }
 .card {
   border: 0px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.1s;
+}
+.card:hover {
+  top: -5px;
 }
 .card-img-top {
   height: 200px;
