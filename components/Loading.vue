@@ -1,5 +1,5 @@
 <template>
-  <Loading :active.sync="isLoading" loader="bars" />
+  <Loading :active.sync="isLoading" loader="bars" color="#0d47a1" />
 </template>
 
 <script>
