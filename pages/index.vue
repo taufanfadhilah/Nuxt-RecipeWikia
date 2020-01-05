@@ -1,5 +1,9 @@
 <template>
   <div class="container-fluid">
+    <Loading
+      :active.sync="isLoading"
+      loader="bars"
+    />
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <div class="card">
@@ -7,21 +11,29 @@
             <h4>Welcome to Recipe Wikia</h4>
             <hr />
             <p class="subtitle">Please Login to Continue</p>
-            <form action="">
+            <form action="" v-on:submit="doLogin">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" />
+                <input
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  required
+                />
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" />
+                <input
+                  name="password"
+                  type="password"
+                  class="form-control"
+                  required
+                />
               </div>
               <div class="form-group">
-                <nuxt-link to="/dashboard">
-                  <button type="button" class="btn btn-primary btn-sm">
-                    Login
-                  </button>
-                </nuxt-link>
+                <button type="submit" class="btn btn-primary btn-sm">
+                  Login
+                </button>
               </div>
             </form>
           </div>
@@ -32,7 +44,38 @@
 </template>
 
 <script>
-export default {}
+import swal from 'sweetalert'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+
+export default {
+  data() {
+    return {
+      isLoading: false
+    }
+  },
+  components: { Loading },
+  methods: {
+    doLogin(e) {
+      e.preventDefault()
+      this.isLoading = true
+      let data = {
+        email: e.target.email.value,
+        password: e.target.password.value
+      }
+      this.$axios
+        .$post('https://jsonplaceholder.typicode.com/posts', data)
+        .then(res => {
+          swal('Success', 'Login Success', 'success').then(() => {
+            this.isLoading = false
+            this.$router.push('/dashboard')
+          })
+          console.log(res)
+        })
+        .catch(err => console.log(err))
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

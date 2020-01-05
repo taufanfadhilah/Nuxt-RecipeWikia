@@ -6,7 +6,6 @@
       img-alt="recipe-image"
       img-top
       tag="article"
-      style="max-width: 20rem;"
       class="mb-3"
     >
       <b-card-text>
