@@ -1,18 +1,18 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <iframe :src="recipe.spoonacularSourceUrl" frameborder="0"></iframe>
-      </div>
-      <div class="col-md-4">
-        <h4 class="mt-5">{{ recipe.title }}</h4>
-        <hr />
-        <p>
+      <div class="col-md-4 pt-5">
+        <img :src="recipe.image" alt="recipe-image" class="img-recipe">
+        <p class="mt-3">
           <v-icon name="stopwatch" /> {{ recipe.readyInMinutes }} Mins -
           <v-icon name="pizza-slice" /> {{ recipe.servings }} Portions -
           <v-icon name="dollar-sign" />
           <span :class="recipe.cheap ? 'cheap' : 'not-cheap'">Cheap</span>
         </p>
+      </div>
+      <div class="col-md-8">
+        <h4 class="mt-5">{{ recipe.title }}</h4>
+        <hr />
         <b>Ingredients: </b>
         <ul>
           <li
@@ -77,5 +77,9 @@ li {
 .not-cheap {
   color: #b71c1c;
   text-decoration: line-through;
+}
+.img-recipe {
+  width: 300px;
+  border-radius: 6px;
 }
 </style>
