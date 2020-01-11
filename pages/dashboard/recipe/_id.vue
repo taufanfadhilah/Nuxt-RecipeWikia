@@ -52,7 +52,7 @@ export default {
     const id = this.$route.params.id
     this.$axios
       .$get(
-        `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.API_KEY}`
+        `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=12917101803e438588260d1efdfff17f`
       )
       .then(res => {
         this.isLoading = false
@@ -96,5 +96,10 @@ li {
 .amount {
   font-style: italic;
   font-weight: 500;
+}
+@media only screen and (max-width: 600px) {
+  .row {
+    padding: 15px;
+  }
 }
 </style>
