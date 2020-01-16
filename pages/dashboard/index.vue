@@ -56,7 +56,7 @@ export default {
       this.$axios
         .$get(
           `https://api.spoonacular.com/recipes/search?offset=${this.page *
-            10}&query=${this.choosenType}&number=12&apiKey=12917101803e438588260d1efdfff17f`
+            10}&query=${this.choosenType}&number=12&apiKey=${process.env.BASE_URL}`
         )
         .then(res => {
           this.recipes = res.results
